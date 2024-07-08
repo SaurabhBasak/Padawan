@@ -14,6 +14,7 @@ export default function Login() {
                             id="email"
                             placeholder="name@email.com"
                             className="border border-gray-300 rounded-md px-4 py-2 text-black"
+                            required
                         />
                     </div>
                     <div className="flex flex-col gap-1">
@@ -25,6 +26,7 @@ export default function Login() {
                             id="password"
                             placeholder="Password"
                             className="border border-gray-300 rounded-md px-4 py-2 text-black"
+                            required
                         />
                     </div>
                     <button
