@@ -5,7 +5,7 @@ export default function Navbar() {
         <div className="grid grid-flow-col font-extrabold font-sans text-xl h-11 items-center">
             <Link
                 href="/"
-                className="relative left-28 top-2 w-32 h-10 border rounded-3xl flex justify-center items-center"
+                className="relative left-28 top-4 w-32 h-10 border rounded-3xl flex justify-center items-center"
             >
                 Padawan
             </Link>
