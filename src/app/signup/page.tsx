@@ -1,18 +1,21 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import React from "react";
 
 function submitForm(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
+    const first_name = (document.getElementById("first_name") as HTMLInputElement).value;
+    const last_name = (document.getElementById("last_name") as HTMLInputElement).value;
     const email = (document.getElementById("email") as HTMLInputElement).value;
-    const password = (document.getElementById("password") as HTMLInputElement).value;
+    const password = (document.getElementById("password") as HTMLInputElement)
+        .value;
     fetch("http://localhost:5000/auth/signup", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ first_name, last_name, email, password }),
     })
         .then((res) => res.json())
         .then((data) => {
@@ -30,9 +33,27 @@ export default function signup() {
             <div className="grid gap-10">
                 <form className="flex flex-col justify-center gap-10">
                     <div className="flex flex-col gap-1">
-                        <label htmlFor="email">
-                            Email
-                        </label>
+                        <label htmlFor="First Name">First Name</label>
+                        <input
+                            type="name"
+                            id="first_name"
+                            placeholder="John"
+                            className="border border-gray-300 rounded-md px-4 py-2 text-black"
+                            required
+                        />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <label htmlFor="Last Name">Last Name</label>
+                        <input
+                            type="name"
+                            id="last_name"
+                            placeholder="Doe"
+                            className="border border-gray-300 rounded-md px-4 py-2 text-black"
+                            required
+                        />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <label htmlFor="email">Email</label>
                         <input
                             type="text"
                             id="email"
@@ -42,9 +63,7 @@ export default function signup() {
                         />
                     </div>
                     <div className="flex flex-col gap-1">
-                        <label htmlFor="password">
-                            Password
-                        </label>
+                        <label htmlFor="password">Password</label>
                         <input
                             type="password"
                             id="password"
