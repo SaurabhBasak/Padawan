@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cors = require('cors');
 const authRoutes = require("./routes/auth");
 
 dotenv.config();
@@ -8,6 +9,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 app.use(express.json());
+app.use(cors());
 
 mongoose
     .connect(process.env.MONGODB_URI, {})
@@ -17,7 +19,6 @@ mongoose
 app.use(
     "/auth",
     (req, res, next) => {
-        console.log("Received request on /api/auth");
         next();
     },
     authRoutes

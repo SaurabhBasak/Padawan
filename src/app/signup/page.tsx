@@ -1,4 +1,28 @@
+'use client';
+
 import Link from "next/link";
+import React from "react";
+
+function submitForm(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    e.preventDefault();
+    const email = (document.getElementById("email") as HTMLInputElement).value;
+    const password = (document.getElementById("password") as HTMLInputElement).value;
+    fetch("http://localhost:5000/auth/signup", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+    })
+        .then((res) => res.json())
+        .then((data) => {
+            if (data.error) {
+                alert(data.error);
+            } else {
+                alert("Signup successful");
+            }
+        });
+}
 
 export default function signup() {
     return (
@@ -32,6 +56,7 @@ export default function signup() {
                     <button
                         type="submit"
                         className="bg-blue-500 hover:bg-blue-600 text-white rounded-md px-4 py-2"
+                        onClick={submitForm}
                     >
                         Signup
                     </button>

@@ -1,10 +1,13 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const cors = require("cors");
 const User = require("../models/user");
 const router = express.Router();
 
-router.post("/signup", async (req, res) => {
+router.use(cors());
+
+router.post("/signup", cors(), async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await User.findOne({ email });
