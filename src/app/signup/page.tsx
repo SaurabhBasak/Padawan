@@ -8,8 +8,7 @@ function submitForm(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const first_name = (document.getElementById("first_name") as HTMLInputElement).value;
     const last_name = (document.getElementById("last_name") as HTMLInputElement).value;
     const email = (document.getElementById("email") as HTMLInputElement).value;
-    const password = (document.getElementById("password") as HTMLInputElement)
-        .value;
+    const password = (document.getElementById("password") as HTMLInputElement).value;
     fetch("http://localhost:5000/auth/signup", {
         method: "POST",
         headers: {
